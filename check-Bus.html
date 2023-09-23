@@ -98,53 +98,54 @@
                 const jsonDataParam = urlParams.get("jsonData");
                 return JSON.parse(jsonDataParam);
             }
-
+    
             // Function to create and append a single "bus-details" div
             function createBusDetailsElement(bus) {
                 const busNameElement = document.createElement("span");
                 busNameElement.classList.add("bus-name");
                 busNameElement.textContent = `Bus Name: ${bus.name}`;
-
+    
                 const sourceDestinationElement = document.createElement("div");
                 sourceDestinationElement.classList.add("source-destination");
                 sourceDestinationElement.textContent = `${bus.stopages[0].stopage} &LongRightArrow; ${bus.stopages[bus.stopages.length - 1].stopage}`;
-
+    
                 const buttonDiv = document.createElement("div");
                 buttonDiv.classList.add("button-div");
-                buttonDiv.appendChild(busNameElement);
-                buttonDiv.appendChild(sourceDestinationElement);
-
+    
+                // Create a link with the busName as a query parameter
                 const link = document.createElement("a");
-                link.href = "check-status.html";
-                link.appendChild(buttonDiv);
-
+                link.href = `check-status.html?busName=${bus.name}`;
+                link.appendChild(busNameElement);
+                link.appendChild(sourceDestinationElement);
+                buttonDiv.appendChild(link);
+    
                 const busDetails = document.createElement("div");
                 busDetails.classList.add("bus-details");
-                busDetails.appendChild(link);
-
+                busDetails.appendChild(buttonDiv);
+    
                 return busDetails;
             }
-
+    
             // Parse JSON data and display bus details
             const jsonData = parseJsonFromUrl();
             const busDetailsContainer = document.getElementById("busDetailsContainer");
-
+    
             jsonData.forEach((bus) => {
                 const busDetails = createBusDetailsElement(bus);
                 busDetailsContainer.appendChild(busDetails);
             });
-
+    
             // Get source and destination from URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             const source = urlParams.get("source");
             const destination = urlParams.get("destination");
-
+    
             // Display source and destination in header-div
             const sourceNameElement = document.getElementById("sourceName");
             const destinationNameElement = document.getElementById("destinationName");
             sourceNameElement.textContent = `Source: ${source}`;
             destinationNameElement.textContent = `Destination: ${destination}`;
         });
-    </script>
+    </script>    
 </body>
 </html>

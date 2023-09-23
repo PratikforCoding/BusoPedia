@@ -40,6 +40,7 @@ func main() {
 
 	apiRouter.Get("/getbuses", apicfg.HandlerGetBuses)
 	apiRouter.Get("/getbusbyname", apicfg.HandlerGetBusByName)
+	apiRouter.Get("/getstopages", apicfg.HandlerGetBusStopagesByName)
 	apiRouter.Post("/addbus", apicfg.HandlerAddBuses)
 
 	userRouter.Post("/createaccount", apicfg.HandlerCreateAccount)
