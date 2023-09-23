@@ -83,7 +83,7 @@
           </div>
         </div>
         <div style="width: 88%">
-          <form action="check-status.html">
+          <form>
             <div>
               <img
                 src="jpg_files/bus-png-icon-17.jpg"
@@ -98,14 +98,16 @@
               <input
                 type="text"
                 class="form__input"
+                id="busNameInput"
                 required
-                placeholder="Enter Bus No."
+                placeholder="Enter Bus Name"
               />
             </div>
             <div>
-              <a href="check-status.html"
-                ><input type="submit" class="check-input" value="Check Status"
-              /></a>
+              <!-- Add an ID to the "Check Status" button -->
+              <button id="checkStatusButton" type="button" class="check-input">
+                Check Status
+              </button>
             </div>
           </form>
         </div>
@@ -211,14 +213,29 @@
       document.addEventListener("DOMContentLoaded", function () {
         const checkBusesButton = document.getElementById("checkBusesButton");
 
-        checkBusesButton.addEventListener("click", function (e) {
-          e.preventDefault(); // Prevent the form from submitting
+        /*checkBusesButton.addEventListener("click", function () {
+          preventDefault(); // Prevent the form from submitting
 
           // Redirect to check-Bus.html with source and destination parameters
           window.location.href = url;
-        });
+        });*/
       });
+      function checkStatusButtonClick() {
+            // Get the value from the busNameInput field
+            const busName = document.getElementById("busNameInput").value;
+
+            // Construct the URL with the busName parameter
+            const url = `check-status.html?busName=${encodeURIComponent(busName)}`;
+
+            // Navigate to the new URL
+            window.location.href = url;
+        }
+
+        // Add a click event listener to the "Check Status" button
+        const checkStatusButton = document.getElementById("checkStatusButton");
+        checkStatusButton.addEventListener("click", checkStatusButtonClick);
     </script>
+
 
     <script src="js/script.js"></script>
   </body>
