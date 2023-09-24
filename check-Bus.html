@@ -17,8 +17,6 @@
 
         /* Style for individual bus details */
         .bus-details {
-            display: flex;
-            flex-direction: column;
             width: 100%;
             margin-bottom: 1%;
             border-radius: 32px;
@@ -29,6 +27,9 @@
 
         /* Style for the button inside bus-details */
         .button-div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             width: 100%;
             padding: 0px;
             border-radius: 32px;
@@ -46,20 +47,27 @@
 
         /* Style for bus name */
         .bus-name {
-            margin-top: 16px;
-            margin-left: 12%;
+            position: absolute;
+            margin-left: 10.8%;
+            margin-top: -3%;
+            font-family: calibri;
+            font-weight: 500;
             font-size: 20px;
             color: black;
             text-decoration: none;
+            color: black;
             font-family: 'Roboto', sans-serif; /* Use the desired font */
+            background-color: white;
         }
 
         /* Style for source-destination */
         .source-destination {
+            position:  absolute;
+            margin-top: 0.7%;
             margin-left: 10.5%;
             font-size: 20px;
+            color: rgb(139, 39, 3);
             font-style: italic;
-            margin-top: -8px;
             position: absolute;
             font-family: 'Roboto', sans-serif; /* Use the desired font */
         }
@@ -68,7 +76,7 @@
         .source-destination-header {
             font-size: 20px;
             font-style: italic;
-            margin-top: -8px;
+            margin-top: 8px;
             font-family: 'Roboto', sans-serif; /* Use the desired font */
         }
     </style>
@@ -107,7 +115,7 @@
     
                 const sourceDestinationElement = document.createElement("div");
                 sourceDestinationElement.classList.add("source-destination");
-                sourceDestinationElement.textContent = `${bus.stopages[0].stopage} &LongRightArrow; ${bus.stopages[bus.stopages.length - 1].stopage}`;
+                sourceDestinationElement.textContent = `${bus.stopages[0].stopage} To ${bus.stopages[bus.stopages.length - 1].stopage}`;
     
                 const buttonDiv = document.createElement("div");
                 buttonDiv.classList.add("button-div");

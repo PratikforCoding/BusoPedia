@@ -8,8 +8,8 @@ import (
 
 	controller "github.com/PratikforCoding/BusoPedia.git/controllers"
 	"github.com/PratikforCoding/BusoPedia.git/database"
-	"github.com/joho/godotenv"
 	"github.com/go-chi/chi/v5"
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -49,10 +49,9 @@ func main() {
 	router.Mount("/api", apiRouter)
 	router.Mount("/usr", userRouter)
 
-
 	corsMux := middlewareCors(router)
-	server := &http.Server {
-		Addr: ":8080",
+	server := &http.Server{
+		Addr:    ":8080",
 		Handler: corsMux,
 	}
 

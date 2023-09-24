@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 
 	reply "github.com/PratikforCoding/BusoPedia.git/json"
 	"go.mongodb.org/mongo-driver/bson"
@@ -17,7 +18,9 @@ func (apiCfg *APIConfig)HandlerGetBuses(w http.ResponseWriter, r *http.Request) 
 	}
 
 	source := r.URL.Query().Get("source")
+	source = strings.ToLower(source)
 	destination := r.URL.Query().Get("destination")
+	destination = strings.ToLower(destination)
 
 	if source == "" || destination == "" {
 		// Return an empty response or an appropriate message.
